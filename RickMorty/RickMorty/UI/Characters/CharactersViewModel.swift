@@ -10,6 +10,7 @@ import Foundation
 class CharactersViewModel: ObservableObject {
     
     @Published var currentState: ViewState<CharactersModel> = .idle
+    @Published var searchText: String = ""
     private var charactersGetUseCase: CharactersGetUseCase
     
     init(charactersGetUseCase: CharactersGetUseCase = CharactersGetUseCase()) {

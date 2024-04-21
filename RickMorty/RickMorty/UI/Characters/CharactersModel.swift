@@ -21,4 +21,12 @@ class CharactersModel {
     public var characters: [CharacterModel] {
         itemsBO.compactMap { CharacterModel(itemBO: $0) }
     }
+    
+    public func filterCharacters(searchText: String) -> [CharacterModel] {
+        if searchText.isEmpty {
+            return characters
+        } else {
+            return characters.filter {$0.name.contains(searchText)}
+        }
+    }
 }

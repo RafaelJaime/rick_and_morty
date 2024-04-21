@@ -66,7 +66,14 @@ extension CharactersView {
     
     func characterList(_ item: CharactersModel) -> some View {
         VStack(alignment: .leading, spacing: 20) {
-            ForEach(item.characters) { character in
+            TextField(text: $viewModel.searchText) {
+                Text("Pulsa aqui para buscar")
+                    .font(.subheadline)
+            }
+            .padding()
+            .background(Color.yellowRM)
+            .clipShape(RoundedRectangle(cornerRadius: 25))
+            ForEach(item.filterCharacters(searchText: viewModel.searchText)) { character in
                 NavigationLink {
                     CharacterView(character: character)
                 } label: {
@@ -75,6 +82,7 @@ extension CharactersView {
                 .buttonStyle(.plain)
             }
         }
+        .padding(.horizontal, 20)
     }
     
     func characterItem(_ character: CharacterModel) -> some View {
@@ -103,7 +111,6 @@ extension CharactersView {
         .clipShape(
             RoundedRectangle(cornerRadius: 8)
         )
-        .padding(.horizontal, 20)
     }
 }
 
