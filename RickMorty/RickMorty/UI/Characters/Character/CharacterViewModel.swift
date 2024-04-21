@@ -9,7 +9,7 @@ import Foundation
 
 class CharacterViewModel: ObservableObject {
     
-    @Published var currentState: ViewState<CharactersModel> = .idle
+    @Published var currentState: ViewState<()> = .idle
     
     init() {
     }
@@ -19,6 +19,7 @@ extension CharacterViewModel {
     
     public func onAppear() {
         // Analitica
+        currentState = .success(())
     }
     
     public func onDissappear() {

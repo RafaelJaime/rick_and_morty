@@ -83,7 +83,19 @@ extension CharactersView {
                 .resizable()
                 .frame(width: 80, height: 80)
                 .clipShape(RoundedRectangle(cornerRadius: 2))
-            Text(character.name)
+            VStack(alignment: .leading) {
+                Text(character.name)
+                if let speciesColor = character.speciesColor {
+                    Text(character.speciesName)
+                        .foregroundColor(.white)
+                        .padding(4)
+                        .padding(.horizontal, 4)
+                        .background {
+                            Capsule()
+                                .fill(speciesColor)
+                        }
+                }
+            }
             Spacer()
         }
         .padding(10)
